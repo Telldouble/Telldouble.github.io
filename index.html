@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRAKE | OVO INDEPENDENT HUB</title>
+    <title>Telldouble | Second World OS Hub</title>
     <style>
         :root {
-            --bg-color: #050507;
-            --card-bg: rgba(18, 18, 22, 0.85);
-            --card-border: rgba(212, 175, 55, 0.3);
-            --text-main: #ffffff;
-            --text-muted: #8e8e93;
-            --ovo-gold: #d4af37;
-            --ovo-gold-bright: #f3e5ab;
-            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
-            --chrome-gradient: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
+            --bg-dark: #000000;
+            --card-bg: #121212;
+            --card-border: #222222;
+            --text-primary: #ffffff;
+            --text-secondary: #999999;
+            --accent-color: #ffffff;
+            --gold-accent: #c5a059;
+            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #c5a059 50%, #9a7b38 100%);
         }
 
         * {
@@ -25,293 +24,48 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            padding: 30px 12px;
-            min-height: 100vh;
+            align-items: flex-start;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Subtle Luxury Ambient Background */
-        .ambient-bg {
+        /* Fullscreen Blurred Backdrop */
+        .page-backdrop {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, rgba(30, 30, 35, 0.6) 0%, rgba(0, 0, 0, 0.95) 100%);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             z-index: 0;
-            background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, rgba(5, 5, 7, 1) 70%);
         }
 
-        .container {
+        /* Central Mobile Container */
+        .hub-container {
             width: 100%;
-            max-width: 480px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
+            max-width: 440px;
+            background-color: #0d0d0f;
+            min-height: 100vh;
             position: relative;
             z-index: 1;
-        }
-
-        /* Header Card */
-        .profile-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-            text-align: center;
-            padding: 28px 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-        }
-
-        .owl-badge {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            display: inline-block;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
-        }
-
-        .profile-card h1 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .profile-card .tagline {
-            font-size: 0.82rem;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* Standard Link Pill */
-        .link-pill {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(10px);
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .link-pill:hover {
-            background: rgba(30, 30, 38, 0.9);
-            border-color: var(--ovo-gold);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
-        }
-
-        .pill-tag {
-            font-size: 0.7rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--ovo-gold-bright);
-            border: 1px solid var(--ovo-gold);
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        /* Featured Action Card */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 22px;
-            padding: 22px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-        }
-
-        .card-title {
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 14px;
-            color: var(--ovo-gold);
-        }
-
-        .gold-btn {
-            display: block;
-            width: 100%;
-            background: var(--gold-gradient);
-            color: #000000;
-            font-weight: 800;
-            padding: 15px;
-            border-radius: 14px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.92rem;
-            letter-spacing: 0.5px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.3);
-        }
-
-        .gold-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
-        }
-
-        /* Direct Music Drop Component */
-        .music-drop {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 14px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 14px;
-        }
-
-        .art-placeholder {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #111, #333);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            border: 1px solid var(--ovo-gold);
-        }
-
-        .music-info h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .music-info p {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        /* Direct Message Form */
-        .contact-form {
+            padding: 24px 16px 40px 16px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 20px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .contact-form input, 
-        .contact-form textarea {
-            background-color: rgba(10, 10, 12, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 14px 16px;
-            color: #fff;
-            font-size: 0.9rem;
-            outline: none;
-            font-family: inherit;
-            transition: border-color 0.2s ease;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .contact-form input:focus, 
-        .contact-form textarea:focus {
-            border-color: var(--ovo-gold);
-        }
-
-        footer {
-            text-align: center;
-            font-size: 0.72rem;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-top: 10px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="ambient-bg"></div>
-
-    <div class="container">
-        
-        <!-- Profile Header -->
-        <div class="profile-card">
-            <div class="owl-badge">🦉</div>
-            <h1>DRAKE</h1>
-            <div class="tagline">OVO Sound • Fully Independent Direct Hub</div>
-        </div>
-
-        <!-- Direct Music Release (No Streaming Middlemen) -->
-        <div class="card">
-            <div class="card-title">Exclusive Independent Drop 📀</div>
-            <div class="music-drop">
-                <div class="art-placeholder">🦉</div>
-                <div class="music-info">
-                    <h3>"ICEMAN" (Unrated Master)</h3>
-                    <p>FLAC High-Res Audio + Stems</p>
-                </div>
-            </div>
-            <a href="#" class="gold-btn">Buy Direct WAV & Stems ($5.00)</a>
-        </div>
-
-        <!-- Direct VIP Tour Pre-Sale -->
-        <a href="#" class="link-pill">
-            <span>Stadium Tour • VIP Direct Access</span>
-            <span class="pill-tag">Live</span>
-        </a>
-
-        <!-- OVO Exclusive Merch Drop -->
-        <a href="#" class="link-pill">
-            <span>OVO / Nocta Direct Vault Drop</span>
-            <span class="pill-tag">Exclusive</span>
-        </a>
-
-        <!-- Fan Membership Club -->
-        <div class="card">
-            <div class="card-title">Embassy Keyholder Access 🔑</div>
-            <p style="font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-bottom: 14px; line-height: 1.4;">
-                Direct updates, unreleased leaks, beat submission portals, and private concert access.
-            </p>
-            <a href="#" class="gold-btn">Join Embassy Membership ($10/mo)</a>
-        </div>
-
-        <!-- Direct Line / Producers & Inquiries -->
-        <div class="card">
-            <div class="card-title">Direct to OVO Management</div>
-            <form class="contact-form" action="#" method="POST">
-                <input type="text" name="name" placeholder="Name or Alias" required>
-                <input type="email" name="email" placeholder="Email / Contact" required>
-                <textarea name="message" placeholder="Submissions, bookings, or direct messages..." required></textarea>
-                <button type="submit" class="gold-btn">Send Direct Message</button>
-            </form>
-        </div>
-
-        <footer>
-            &copy; 2026 OVO Sound Independent. No Record Label Needed.
-        </footer>
-
-    </div>
-
-</body>
-</html>
+        /* Profile Avatar & Header */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center
