@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telldouble | Second World OS Hub</title>
+    <title>DRAKE | OVO INDEPENDENT HUB</title>
     <style>
         :root {
-            --bg-color: #08080a;
-            --card-bg: rgba(22, 22, 26, 0.85);
-            --card-border: rgba(197, 160, 89, 0.25);
+            --bg-color: #050507;
+            --card-bg: rgba(18, 18, 22, 0.85);
+            --card-border: rgba(212, 175, 55, 0.3);
             --text-main: #ffffff;
-            --text-muted: #a1a1a1;
-            --gold-accent: #c5a059;
-            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #c5a059 50%, #9a7b38 100%);
+            --text-muted: #8e8e93;
+            --ovo-gold: #d4af37;
+            --ovo-gold-bright: #f3e5ab;
+            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            --chrome-gradient: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
         }
 
         * {
@@ -33,8 +35,8 @@
             overflow-x: hidden;
         }
 
-        /* Starry Night Canvas / CSS Background */
-        .stars-container {
+        /* Subtle Luxury Ambient Background */
+        .ambient-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -42,21 +44,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            background: radial-gradient(ellipse at bottom, #1b2735 0%, #08080a 100%);
-            overflow: hidden;
-        }
-
-        .star {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.8); }
-            50% { opacity: 0.9; transform: scale(1.2); }
+            background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, rgba(5, 5, 7, 1) 70%);
         }
 
         .container {
@@ -69,111 +57,158 @@
             z-index: 1;
         }
 
-        /* Profile Card Header */
+        /* Header Card */
         .profile-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
             text-align: center;
-            padding: 26px 18px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            padding: 28px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .owl-badge {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
         }
 
         .profile-card h1 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .profile-card p {
-            font-size: 0.88rem;
+        .profile-card .tagline {
+            font-size: 0.82rem;
+            letter-spacing: 2px;
             color: var(--text-muted);
-            line-height: 1.4;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
-        /* Social Link Pills */
-        .social-pill {
+        /* Standard Link Pill */
+        .link-pill {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 30px;
-            padding: 14px 20px;
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             color: var(--text-main);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.92rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
             backdrop-filter: blur(10px);
-            transition: all 0.25s ease;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .social-pill:hover {
-            background-color: rgba(35, 35, 42, 0.9);
-            border-color: var(--gold-accent);
+        .link-pill:hover {
+            background: rgba(30, 30, 38, 0.9);
+            border-color: var(--ovo-gold);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
         }
 
-        /* Card Component */
+        .pill-tag {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--ovo-gold-bright);
+            border: 1px solid var(--ovo-gold);
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        /* Featured Action Card */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px;
+            border-radius: 22px;
+            padding: 22px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
         }
 
         .card-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1.8px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
             text-transform: uppercase;
             text-align: center;
-            margin-bottom: 16px;
-            color: var(--gold-accent);
+            margin-bottom: 14px;
+            color: var(--ovo-gold);
         }
 
-        /* Stylized Support / Tip Section */
-        .tip-card {
-            background: linear-gradient(180deg, rgba(31, 26, 16, 0.9) 0%, rgba(22, 22, 26, 0.9) 100%);
-            border: 1px solid rgba(197, 160, 89, 0.4);
-        }
-
-        .tip-grid {
-            display: flex;
-            gap: 10px;
-        }
-
-        .tip-btn {
-            flex: 1;
-            background: rgba(197, 160, 89, 0.1);
-            border: 1px solid var(--gold-accent);
-            color: #ffffff;
-            font-weight: 700;
-            padding: 12px 8px;
-            border-radius: 14px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.88rem;
-            transition: all 0.2s ease;
-        }
-
-        .tip-btn:hover {
+        .gold-btn {
+            display: block;
+            width: 100%;
             background: var(--gold-gradient);
             color: #000000;
             font-weight: 800;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(197, 160, 89, 0.35);
+            padding: 15px;
+            border-radius: 14px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.92rem;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.3);
         }
 
-        /* Contact / Message Form */
+        .gold-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Direct Music Drop Component */
+        .music-drop {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 14px;
+        }
+
+        .art-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #111, #333);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 1px solid var(--ovo-gold);
+        }
+
+        .music-info h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .music-info p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Direct Message Form */
         .contact-form {
             display: flex;
             flex-direction: column;
@@ -182,10 +217,10 @@
 
         .contact-form input, 
         .contact-form textarea {
-            background-color: rgba(13, 13, 13, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background-color: rgba(10, 10, 12, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 12px 16px;
+            padding: 14px 16px;
             color: #fff;
             font-size: 0.9rem;
             outline: none;
@@ -195,128 +230,85 @@
 
         .contact-form textarea {
             resize: vertical;
-            min-height: 90px;
+            min-height: 80px;
         }
 
         .contact-form input:focus, 
         .contact-form textarea:focus {
-            border-color: var(--gold-accent);
-        }
-
-        .contact-form button {
-            background: var(--gold-gradient);
-            color: #000000;
-            border: none;
-            border-radius: 12px;
-            padding: 14px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .contact-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(197, 160, 89, 0.3);
-        }
-
-        /* Video Embed Container */
-        .embed-container {
-            width: 100%;
-            border-radius: 14px;
-            overflow: hidden;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-        }
-
-        .embed-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 14px;
+            border-color: var(--ovo-gold);
         }
 
         footer {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
             margin-top: 10px;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <!-- Starry Background Stars -->
-    <div class="stars-container">
-        <div class="star" style="top: 10%; left: 15%; width: 2px; height: 2px; animation-delay: 0s;"></div>
-        <div class="star" style="top: 25%; left: 80%; width: 3px; height: 3px; animation-delay: 1s;"></div>
-        <div class="star" style="top: 40%; left: 30%; width: 2px; height: 2px; animation-delay: 1.5s;"></div>
-        <div class="star" style="top: 60%; left: 85%; width: 2px; height: 2px; animation-delay: 0.5s;"></div>
-        <div class="star" style="top: 75%; left: 20%; width: 3px; height: 3px; animation-delay: 2s;"></div>
-        <div class="star" style="top: 85%; left: 70%; width: 2px; height: 2px; animation-delay: 1.2s;"></div>
-        <div class="star" style="top: 18%; left: 50%; width: 2px; height: 2px; animation-delay: 0.8s;"></div>
-        <div class="star" style="top: 52%; left: 10%; width: 3px; height: 3px; animation-delay: 2.3s;"></div>
-    </div>
+    <div class="ambient-bg"></div>
 
     <div class="container">
         
         <!-- Profile Header -->
         <div class="profile-card">
-            <h1>Telldouble</h1>
-            <p>Los Angeles Based Actor, Music Producer, and Content Creator</p>
+            <div class="owl-badge">🦉</div>
+            <h1>DRAKE</h1>
+            <div class="tagline">OVO Sound • Fully Independent Direct Hub</div>
         </div>
 
-        <!-- Social Links (TikTok & Instagram) -->
-        <a href="https://www.tiktok.com/@telldoubletv" target="_blank" class="social-pill">
-            TikTok: @telldoubletv
-        </a>
-        <a href="https://www.instagram.com/telldouble" target="_blank" class="social-pill">
-            Instagram: @telldouble
-        </a>
-
-        <!-- Support / Tip Section -->
-        <div class="card tip-card">
-            <div class="card-title">Support the Vision 🎯</div>
-            <p style="font-size: 0.8rem; color: #c5c6c7; text-align: center; margin-bottom: 14px;">
-                Direct funding fuels independent production, studio gear, and unreleased drops.
-            </p>
-            <div class="tip-grid">
-                <a href="#" class="tip-btn">$5 Tip</a>
-                <a href="#" class="tip-btn">$10 Tip</a>
-                <a href="#" class="tip-btn">Sponsor</a>
-            </div>
-        </div>
-
-        <!-- Talent Reel Section -->
+        <!-- Direct Music Release (No Streaming Middlemen) -->
         <div class="card">
-            <div class="card-title">InShot Talent Reel</div>
-            <div class="embed-container">
-                <iframe src="https://www.youtube.com/embed/myeV4CS7ht0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-title">Exclusive Independent Drop 📀</div>
+            <div class="music-drop">
+                <div class="art-placeholder">🦉</div>
+                <div class="music-info">
+                    <h3>"ICEMAN" (Unrated Master)</h3>
+                    <p>FLAC High-Res Audio + Stems</p>
+                </div>
             </div>
+            <a href="#" class="gold-btn">Buy Direct WAV & Stems ($5.00)</a>
         </div>
 
-        <!-- Contact & Leave a Message Section -->
+        <!-- Direct VIP Tour Pre-Sale -->
+        <a href="#" class="link-pill">
+            <span>Stadium Tour • VIP Direct Access</span>
+            <span class="pill-tag">Live</span>
+        </a>
+
+        <!-- OVO Exclusive Merch Drop -->
+        <a href="#" class="link-pill">
+            <span>OVO / Nocta Direct Vault Drop</span>
+            <span class="pill-tag">Exclusive</span>
+        </a>
+
+        <!-- Fan Membership Club -->
         <div class="card">
-            <div class="card-title">Contact & Message</div>
-            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 14px;">
-                Direct booking, production inquiries, or leave a message
+            <div class="card-title">Embassy Keyholder Access 🔑</div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-bottom: 14px; line-height: 1.4;">
+                Direct updates, unreleased leaks, beat submission portals, and private concert access.
             </p>
+            <a href="#" class="gold-btn">Join Embassy Membership ($10/mo)</a>
+        </div>
+
+        <!-- Direct Line / Producers & Inquiries -->
+        <div class="card">
+            <div class="card-title">Direct to OVO Management</div>
             <form class="contact-form" action="#" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Type your message or inquiry here..." required></textarea>
-                <button type="submit">Send Message</button>
+                <input type="text" name="name" placeholder="Name or Alias" required>
+                <input type="email" name="email" placeholder="Email / Contact" required>
+                <textarea name="message" placeholder="Submissions, bookings, or direct messages..." required></textarea>
+                <button type="submit" class="gold-btn">Send Direct Message</button>
             </form>
         </div>
 
         <footer>
-            &copy; 2026 Telldouble Productions. All Rights Reserved.
+            &copy; 2026 OVO Sound Independent. No Record Label Needed.
         </footer>
 
     </div>
