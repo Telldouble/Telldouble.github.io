@@ -12,6 +12,9 @@
       --card-bg: #141b27;
       --card-hover: #1c2536;
       --accent-color: #00e676;
+      --accent-glow: rgba(0, 230, 118, 0.35);
+      --gold-accent: #ffb703;
+      --gold-glow: rgba(255, 183, 3, 0.25);
       --text-main: #ffffff;
       --text-sub: #8a99ad;
       --border-color: #1f2a3c;
@@ -79,6 +82,7 @@
       bottom: 8px;
       right: 8px;
       border: 2px solid var(--card-bg);
+      box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .profile-info {
@@ -118,12 +122,13 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
 
     .social-btn:hover {
       background-color: var(--border-color);
       color: var(--accent-color);
+      transform: translateY(-2px);
     }
 
     /* Bio Block */
@@ -155,12 +160,13 @@
       justify-content: space-between;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s, background 0.2s;
+      transition: transform 0.2s, background 0.2s, border-color 0.2s;
     }
 
     .card:hover {
       background-color: var(--card-hover);
       transform: translateY(-2px);
+      border-color: #2e3d54;
     }
 
     .card-header {
@@ -178,7 +184,6 @@
       font-size: 0.9rem;
     }
 
-    /* Specific Cards */
     .media-preview {
       width: 100%;
       border-radius: 12px;
@@ -197,12 +202,116 @@
       margin-top: 2px;
     }
 
-    /* Full-Width Cards */
     .full-width {
       grid-column: span 2;
     }
 
-    /* Tour / Shows List */
+    /* --- COOL NEON DONATION CARD --- */
+    .donation-card {
+      grid-column: span 2;
+      position: relative;
+      background: linear-gradient(135deg, #101926 0%, #172336 100%);
+      border-radius: 22px;
+      padding: 18px 20px;
+      border: 1px solid rgba(0, 230, 118, 0.3);
+      box-shadow: 0 0 20px rgba(0, 230, 118, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .donation-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 230, 118, 0.12) 0%, transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .donation-card:hover {
+      transform: translateY(-3px) scale(1.01);
+      border-color: var(--accent-color);
+      box-shadow: 0 8px 25px var(--accent-glow);
+    }
+
+    .donation-content {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 1;
+    }
+
+    .donation-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(0, 230, 118, 0.12);
+      border: 1px solid rgba(0, 230, 118, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-color);
+      font-size: 1.3rem;
+      box-shadow: inset 0 0 10px rgba(0, 230, 118, 0.2);
+    }
+
+    .donation-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .donation-badge {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 2px;
+    }
+
+    .donation-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .donation-desc {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+    }
+
+    .donation-btn {
+      z-index: 1;
+      padding: 10px 16px;
+      background: var(--accent-color);
+      color: #0b0f17;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 15px var(--accent-glow);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .donation-card:hover .donation-btn {
+      background: #ffffff;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+      transform: scale(1.05);
+    }
+
+    /* Shows / Tour List */
     .show-list {
       display: flex;
       flex-direction: column;
@@ -246,7 +355,6 @@
       font-size: 0.8rem;
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       font-size: 0.75rem;
@@ -293,6 +401,24 @@
     <!-- Grid Container -->
     <div class="card-grid">
 
+      <!-- 🔥 ULTRA COOL DONATION CARD 🔥 -->
+      <a href="https://cash.app/$MartellEdwards" target="_blank" class="donation-card">
+        <div class="donation-content">
+          <div class="donation-icon-box">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <div class="donation-text">
+            <div class="donation-badge">Fuel The Mission</div>
+            <div class="donation-title">Fund Second World OS</div>
+            <div class="donation-desc">Support independent production & IP</div>
+          </div>
+        </div>
+        <div class="donation-btn">
+          <span>Support</span>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </a>
+
       <!-- Spotify Card -->
       <a href="#" class="card">
         <div>
@@ -323,7 +449,7 @@
         </div>
       </a>
 
-      <!-- Merch / Storefront Card -->
+      <!-- Storefront Card -->
       <a href="#" class="card">
         <div>
           <div class="card-header">
