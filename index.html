@@ -1,259 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telldouble | Second World OS Hub</title>
-    <style>
-        :root {
-            --bg-color: #0a0a0c;
-            --card-bg: #141418;
-            --card-border: #26262e;
-            --text-main: #ffffff;
-            --text-muted: #9a9ab0;
-            --gold-accent: #c5a059;
-            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #c5a059 50%, #9a7b38 100%);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telldouble Productions | Executive Creator Profile</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0b0f17;
+      --card-bg: #141b27;
+      --card-hover: #1c2536;
+      --accent-color: #00e676;
+      --text-main: #ffffff;
+      --text-sub: #8a99ad;
+      --border-color: #1f2a3c;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            padding: 30px 12px;
-            min-height: 100vh;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 20px 15px;
+      min-height: 100vh;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 440px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-        /* Profile Card Header */
-        .profile-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            text-align: center;
-            padding: 26px 18px;
-        }
+    /* Hero Banner & Profile Header */
+    .profile-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      position: relative;
+    }
 
-        .profile-card h1 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 6px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .banner {
+      height: 120px;
+      background: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+    }
 
-        .profile-card p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
+    .avatar-wrapper {
+      position: relative;
+      margin-top: -50px;
+      display: inline-block;
+    }
 
-        /* Social Link Pills */
-        .social-pill {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 30px;
-            padding: 14px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.92rem;
-            transition: all 0.2s ease;
-        }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid var(--card-bg);
+      object-fit: cover;
+    }
 
-        .social-pill:hover {
-            border-color: var(--gold-accent);
-            transform: translateY(-2px);
-        }
+    .online-badge {
+      width: 14px;
+      height: 14px;
+      background-color: var(--accent-color);
+      border-radius: 50%;
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      border: 2px solid var(--card-bg);
+    }
 
-        /* Card Section Component */
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px;
-        }
+    .profile-info {
+      padding: 12px 20px 20px;
+    }
 
-        .card-title {
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 14px;
-            color: var(--gold-accent);
-        }
+    .profile-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
 
-        /* Tip / Support Section */
-        .tip-grid {
-            display: flex;
-            gap: 10px;
-        }
+    .profile-tag {
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
 
-        .tip-btn {
-            flex: 1;
-            background: transparent;
-            border: 1px solid var(--gold-accent);
-            color: #ffffff;
-            font-weight: 700;
-            padding: 12px 8px;
-            border-radius: 12px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.88rem;
-            transition: all 0.2s ease;
-        }
+    /* Social Bar */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
 
-        .tip-btn:hover {
-            background: var(--gold-gradient);
-            color: #000000;
-        }
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--card-hover);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
 
-        /* Video Embed Container */
-        .embed-container {
-            width: 100%;
-            border-radius: 14px;
-            overflow: hidden;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            background-color: #000000;
-        }
+    .social-btn:hover {
+      background-color: var(--border-color);
+      color: var(--accent-color);
+    }
 
-        .embed-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+    /* Bio Block */
+    .bio-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: var(--text-sub);
+    }
 
-        /* Contact Form */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+    /* Grid Layout for Embedded Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
 
-        .contact-form input, 
-        .contact-form textarea {
-            background-color: #0a0a0c;
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #fff;
-            font-size: 0.9rem;
-            outline: none;
-            font-family: inherit;
-        }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, background 0.2s;
+    }
 
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
+    .card:hover {
+      background-color: var(--card-hover);
+      transform: translateY(-2px);
+    }
 
-        .contact-form input:focus, 
-        .contact-form textarea:focus {
-            border-color: var(--gold-accent);
-        }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
 
-        .contact-form button {
-            background: var(--gold-gradient);
-            color: #000000;
-            border: none;
-            border-radius: 12px;
-            padding: 14px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            cursor: pointer;
-        }
+    .card-header i {
+      font-size: 0.9rem;
+    }
 
-        footer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-    </style>
+    /* Specific Cards */
+    .media-preview {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      object-fit: cover;
+    }
+
+    .item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .item-sub {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+
+    /* Full-Width Cards */
+    .full-width {
+      grid-column: span 2;
+    }
+
+    /* Tour / Shows List */
+    .show-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .show-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-color);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .show-item:last-child {
+      border-bottom: none;
+    }
+
+    .show-date {
+      font-size: 0.75rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .show-venue {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .show-location {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
+    .arrow-icon {
+      color: var(--text-sub);
+      font-size: 0.8rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      margin-top: 10px;
+      padding-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
+  <div class="container">
+
+    <!-- Header / Profile Card -->
+    <div class="profile-card">
+      <div class="banner"></div>
+      <div class="avatar-wrapper">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Martell Edwards" class="avatar">
+        <div class="online-badge"></div>
+      </div>
+      <div class="profile-info">
+        <div class="profile-name">
+          Martell Edwards
+          <i class="fa-solid fa-circle-check" style="color: #00e676; font-size: 0.9rem;"></i>
+        </div>
+        <div class="profile-tag">Audio Producer / Systems Architect / LA</div>
+
+        <!-- Social Icons -->
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-spotify"></i></a>
+          <a href="#" class="social-btn"><i class="fa-solid fa-link"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bio Card -->
+    <div class="bio-card">
+      LA-based Producer & CEO of Telldouble Productions. Architecting urban pop, high-density audio systems, and Second World OS.
+    </div>
+
+    <!-- Grid Container -->
+    <div class="card-grid">
+
+      <!-- Spotify Card -->
+      <a href="#" class="card">
+        <div>
+          <div class="card-header" style="color: #1db954;">
+            <i class="fa-brands fa-spotify"></i> Spotify
+          </div>
+          <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=300&q=80" class="media-preview" alt="Spotify Cover">
+          <div class="item-title">Insomnia (Master)</div>
+          <div class="item-sub">Telldouble Productions</div>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.75rem; color: var(--accent-color); font-weight: 600;">
+          <i class="fa-solid fa-play"></i> Play Now
+        </div>
+      </a>
+
+      <!-- YouTube Card -->
+      <a href="#" class="card">
+        <div>
+          <div class="card-header" style="color: #ff0000;">
+            <i class="fa-brands fa-youtube"></i> YouTube
+          </div>
+          <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=300&q=80" class="media-preview" alt="YouTube Preview">
+          <div class="item-title">Live Studio Session</div>
+          <div class="item-sub">LAFS Showcase / Los Angeles</div>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.75rem; color: var(--text-sub);">
+          Watch Video <i class="fa-solid fa-arrow-right arrow-icon"></i>
+        </div>
+      </a>
+
+      <!-- Merch / Storefront Card -->
+      <a href="#" class="card">
+        <div>
+          <div class="card-header">
+            <i class="fa-solid fa-bag-shopping"></i> Storefront
+          </div>
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80" class="media-preview" alt="Merch">
+          <div class="item-title">SWO Sound Pack v1</div>
+          <div class="item-sub">$25.00 • Stems & Presets</div>
+        </div>
+      </a>
+
+      <!-- Latest Release Card -->
+      <a href="#" class="card">
+        <div>
+          <div class="card-header">
+            <i class="fa-solid fa-compact-disc"></i> Latest Release
+          </div>
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80" class="media-preview" alt="Album Cover">
+          <div class="item-title">Silver Streak EP</div>
+          <div class="item-sub">5-Track Crossover</div>
+        </div>
+      </a>
+
+      <!-- Full-Width Tour / Events Card -->
+      <div class="card full-width">
+        <div class="card-header" style="color: var(--accent-color);">
+          <i class="fa-solid fa-calendar-days"></i> Upcoming Activations & Shows
+        </div>
         
-        <!-- Profile Header -->
-        <div class="profile-card">
-            <h1>Telldouble</h1>
-            <p>Los Angeles Based Actor, Music Producer, and Content Creator</p>
-        </div>
-
-        <!-- Social Links -->
-        <a href="https://www.tiktok.com/@telldoubletv" target="_blank" class="social-pill">
-            TikTok: @telldoubletv
-        </a>
-        <a href="https://www.instagram.com/telldouble" target="_blank" class="social-pill">
-            Instagram: @telldouble
-        </a>
-
-        <!-- Support Section -->
-        <div class="card">
-            <div class="card-title">Support the Vision 🎯</div>
-            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 14px;">
-                Direct funding fuels independent production, studio gear, and unreleased drops.
-            </p>
-            <div class="tip-grid">
-                <a href="#" class="tip-btn">$5 Tip</a>
-                <a href="#" class="tip-btn">$10 Tip</a>
-                <a href="#" class="tip-btn">Sponsor</a>
+        <div class="show-list">
+          <a href="#" class="show-item">
+            <div>
+              <div class="show-date">OCT 28, 2026</div>
+              <div class="show-venue">Halloween Bash & Showcase</div>
+              <div class="show-location">B2 Lobby, LAFS • Los Angeles, CA</div>
             </div>
-        </div>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </a>
 
-        <!-- InShot Talent Reel Section -->
-        <div class="card">
-            <div class="card-title">InShot Talent Reel</div>
-            <div class="embed-container">
-                <iframe src="https://www.youtube.com/embed/myeV4CS7ht0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <a href="#" class="show-item">
+            <div>
+              <div class="show-date">NOV 04, 2026</div>
+              <div class="show-venue">LAFS Alumni Film Showcase</div>
+              <div class="show-location">Main Theater • Hollywood, CA</div>
             </div>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </a>
         </div>
-
-        <!-- Contact & Booking -->
-        <div class="card">
-            <div class="card-title">Contact & Message</div>
-            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 14px;">
-                Direct booking, production inquiries, or leave a message
-            </p>
-            <form class="contact-form" action="#" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Type your message or inquiry here..." required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-
-        <footer>
-            &copy; 2026 Telldouble Productions. All Rights Reserved.
-        </footer>
+      </div>
 
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      © 2026 Telldouble Productions • Second World OS
+    </div>
+
+  </div>
 
 </body>
 </html>
