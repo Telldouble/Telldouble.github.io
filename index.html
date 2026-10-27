@@ -13,6 +13,8 @@
       --card-hover: #1c2536;
       --accent-color: #00e676;
       --accent-glow: rgba(0, 230, 118, 0.35);
+      --gold-accent: #ffb703;
+      --gold-glow: rgba(255, 183, 3, 0.25);
       --text-main: #ffffff;
       --text-sub: #8a99ad;
       --border-color: #1f2a3c;
@@ -141,7 +143,7 @@
       color: var(--text-sub);
     }
 
-    /* Grid Layout */
+    /* Grid Layout for Embedded Cards */
     .card-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -176,6 +178,10 @@
       text-transform: uppercase;
       font-weight: 600;
       margin-bottom: 10px;
+    }
+
+    .card-header i {
+      font-size: 0.9rem;
     }
 
     .media-preview {
@@ -219,6 +225,18 @@
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
+    .donation-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 230, 118, 0.12) 0%, transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
     .donation-card:hover {
       transform: translateY(-3px) scale(1.01);
       border-color: var(--accent-color);
@@ -243,6 +261,12 @@
       justify-content: center;
       color: var(--accent-color);
       font-size: 1.3rem;
+      box-shadow: inset 0 0 10px rgba(0, 230, 118, 0.2);
+    }
+
+    .donation-text {
+      display: flex;
+      flex-direction: column;
     }
 
     .donation-title {
@@ -267,41 +291,10 @@
       white-space: nowrap;
     }
 
-    /* --- MESSAGE ME CARD --- */
-    .message-card {
-      grid-column: span 2;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s;
-    }
-
-    .message-card:hover {
-      background-color: var(--card-hover);
-      border-color: var(--accent-color);
-      transform: translateY(-2px);
-    }
-
-    .message-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .message-icon {
-      font-size: 1.2rem;
-      color: var(--accent-color);
-    }
-
-    .message-title {
-      font-size: 0.95rem;
-      font-weight: 600;
+    .donation-card:hover .donation-btn {
+      background: #ffffff;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+      transform: scale(1.05);
     }
 
     /* Shows / Tour List */
@@ -375,12 +368,13 @@
         </div>
         <div class="profile-tag">Audio Producer / Systems Architect / LA</div>
 
-        <!-- Social Icons (Includes TikTok) -->
+        <!-- Social Icons -->
         <div class="social-links">
-          <a href="https://www.youtube.com" target="_blank" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
-          <a href="https://www.tiktok.com/@telldoubletv?_t=ZT-8uaCGIfdxH9&_r=1" target="_blank" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="https://www.instagram.com" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://open.spotify.com" target="_blank" class="social-btn"><i class="fa-brands fa-spotify"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-spotify"></i></a>
+          <a href="#" class="social-btn"><i class="fa-solid fa-link"></i></a>
         </div>
       </div>
     </div>
@@ -406,6 +400,36 @@
         <div class="donation-btn">
           <i class="fa-solid fa-credit-card"></i>
           <span>DONATE-Dream B.I.G.</span>
+        </div>
+      </a>
+
+      <!-- Spotify Card -->
+      <a href="#" class="card">
+        <div>
+          <div class="card-header" style="color: #1db954;">
+            <i class="fa-brands fa-spotify"></i> Spotify
+          </div>
+          <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=300&q=80" class="media-preview" alt="Spotify Cover">
+          <div class="item-title">Insomnia (Master)</div>
+          <div class="item-sub">Telldouble Productions</div>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.75rem; color: var(--accent-color); font-weight: 600;">
+          <i class="fa-solid fa-play"></i> Play Now
+        </div>
+      </a>
+
+      <!-- YouTube Card -->
+      <a href="#" class="card">
+        <div>
+          <div class="card-header" style="color: #ff0000;">
+            <i class="fa-brands fa-youtube"></i> YouTube
+          </div>
+          <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=300&q=80" class="media-preview" alt="YouTube Preview">
+          <div class="item-title">Live Studio Session</div>
+          <div class="item-sub">LAFS Showcase / Los Angeles</div>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.75rem; color: var(--text-sub);">
+          Watch Video <i class="fa-solid fa-arrow-right arrow-icon"></i>
         </div>
       </a>
 
@@ -459,15 +483,6 @@
           </a>
         </div>
       </div>
-
-      <!-- MESSAGE ME CARD -->
-      <a href="mailto:m.edwards12@lafilm.edu" class="message-card">
-        <div class="message-info">
-          <i class="fa-solid fa-envelope message-icon"></i>
-          <span class="message-title">Message Me</span>
-        </div>
-        <i class="fa-solid fa-arrow-right arrow-icon"></i>
-      </a>
 
     </div>
 
